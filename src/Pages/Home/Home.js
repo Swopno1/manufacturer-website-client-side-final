@@ -2,6 +2,8 @@ import React from "react";
 import Nav from "../../Shared/Nav";
 import Banner from "./Banner";
 import BusinessSummary from "./BusinessSummary";
+import CorporateDeal from "./CorporateDeal";
+import LatestNews from "./LatestNews";
 import Reviews from "./Reviews";
 import Tools from "./Tools";
 
@@ -13,6 +15,8 @@ const Home = () => {
       <Tools></Tools>
       <BusinessSummary></BusinessSummary>
       <Reviews></Reviews>
+      <CorporateDeal></CorporateDeal>
+      <LatestNews></LatestNews>
     </div>
   );
 };
