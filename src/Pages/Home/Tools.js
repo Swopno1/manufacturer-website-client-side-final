@@ -42,7 +42,7 @@ const Tools = () => {
             className="max-w-sm rounded-lg shadow-2xl"
           />
           <div className="text-center lg:text-right">
-            <h1 className="text-5xl font-bold">Our Tools</h1>
+            <h1 className="text-4xl font-bold">Our Tools</h1>
             <p className="py-6">
               We have a wide range of tools for your personal and professional
               need. But we mainly offer best tools for home or personal usages.
