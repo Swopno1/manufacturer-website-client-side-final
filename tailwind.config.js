@@ -8,14 +8,14 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          primary: "#a991f7",
-          secondary: "#f6d860",
-          accent: "#37cdbe",
-          neutral: "#3d4451",
+          primary: "#201F1D",
+          secondary: "#F6862A",
+          accent: "#4E443C",
+          neutral: "#3A332D",
+          success: "#7AC05A",
           "base-100": "#ffffff",
         },
       },
-      "dark",
     ],
   },
 };

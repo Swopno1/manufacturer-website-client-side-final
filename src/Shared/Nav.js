@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Nav = () => {
   const navItems = [
@@ -8,9 +8,11 @@ const Nav = () => {
     { _id: 3, item: "Contact", link: "/contact" },
   ];
 
+  let activeClass = "text-secondary";
+
   return (
-    <nav className="bg-base-100">
-      <div className="container navbar mx-auto">
+    <nav className="bg-accent h-24 py-1">
+      <div className="container mx-auto navbar text-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -35,12 +37,22 @@ const Nav = () => {
             >
               {navItems.map((item) => (
                 <li key={item._id}>
-                  <Link to={item.link}>{item.item}</Link>
+                  <NavLink
+                    to={item.link}
+                    className={({ isActive }) =>
+                      isActive ? activeClass : undefined
+                    }
+                  >
+                    {item.item}
+                  </NavLink>
                 </li>
               ))}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
+          <Link
+            to="/"
+            className="btn btn-ghost text-xl text-success font-extrabold uppercase"
+          >
             Makers
           </Link>
         </div>
@@ -48,7 +60,14 @@ const Nav = () => {
           <ul className="menu menu-horizontal p-0">
             {navItems.map((item) => (
               <li key={item._id}>
-                <Link to={item.link}>{item.item}</Link>
+                <NavLink
+                  to={item.link}
+                  className={({ isActive }) =>
+                    isActive ? activeClass : undefined
+                  }
+                >
+                  {item.item}
+                </NavLink>
               </li>
             ))}
           </ul>
