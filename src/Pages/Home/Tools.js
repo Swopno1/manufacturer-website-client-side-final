@@ -23,7 +23,7 @@ const Tools = () => {
       price: 100,
     },
     {
-      _id: 1,
+      _id: 3,
       name: "Tools 3",
       img: "https://api.lorem.space/image/shoes?w=400&h=225",
       description: "Sample description for tools 3.",
