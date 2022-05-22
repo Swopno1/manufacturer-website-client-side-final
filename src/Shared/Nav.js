@@ -11,7 +11,7 @@ const Nav = () => {
   let activeClass = "text-secondary";
 
   return (
-    <nav className="bg-accent h-24 py-1">
+    <nav className="bg-accent h-24 py-1 flex">
       <div className="container mx-auto navbar text-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -51,7 +51,7 @@ const Nav = () => {
           </div>
           <Link
             to="/"
-            className="btn btn-ghost text-xl text-success font-extrabold uppercase"
+            className="btn btn-ghost text-4xl text-success font-extrabold uppercase"
           >
             Makers
           </Link>
