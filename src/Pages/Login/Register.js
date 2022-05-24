@@ -80,7 +80,7 @@ const Register = () => {
           </p>
 
           <button type="submit" className="btn w-full max-w-xs my-1">
-            Submit
+            Register
           </button>
         </form>
       </div>

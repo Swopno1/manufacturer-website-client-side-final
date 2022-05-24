@@ -1,5 +1,8 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink } from "react-router-dom";
+import auth from "../firebase.init";
 
 const Nav = () => {
   const navItems = [
@@ -7,6 +10,12 @@ const Nav = () => {
     { _id: 2, item: "Blogs", link: "/blogs" },
     { _id: 3, item: "Contact", link: "/contact" },
   ];
+
+  const [user] = useAuthState(auth);
+
+  const logout = () => {
+    signOut(auth);
+  };
 
   let activeClass = "text-secondary";
 
@@ -73,12 +82,20 @@ const Nav = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login" className="btn btn-ghost">
-            Login
-          </Link>
-          <Link to="/register" className="btn btn-ghost">
-            Register
-          </Link>
+          {user?.email ? (
+            <>
+              <button onClick={() => logout()}>Logout</button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn btn-ghost">
+                Login
+              </Link>
+              <Link to="/register" className="btn btn-ghost">
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
