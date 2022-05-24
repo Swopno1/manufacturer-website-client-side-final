@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const Register = () => {
   const {
@@ -8,7 +10,31 @@ const Register = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (user) {
+    return (
+      <div>
+        <p>Registered User: {user.email}</p>
+      </div>
+    );
+  }
+
+  const onSubmit = (data) => {
+    createUserWithEmailAndPassword(data.email, data.password);
+  };
 
   return (
     <div className="flex flex-col w-96 mx-auto border-opacity-50 py-12">
