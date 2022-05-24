@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import Spinner from "../../Shared/Spinner";
 
 const Register = () => {
   const {
@@ -13,21 +17,26 @@ const Register = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
-  if (error) {
+  if (error || gError) {
     return (
-      <div>
+      <div className="container mx-auto">
         <p>Error: {error.message}</p>
       </div>
     );
   }
-  if (loading) {
-    return <p>Loading...</p>;
+  if (loading || gLoading) {
+    return (
+      <div className="container mx-auto flex text-center justify-center">
+        <Spinner></Spinner>
+      </div>
+    );
   }
-  if (user) {
+  if (user || gUser) {
     return (
       <div>
-        <p>Registered User: {user.email}</p>
+        <p>Registered User: {user ? user.email : gUser.user.email}</p>
       </div>
     );
   }
@@ -77,7 +86,12 @@ const Register = () => {
       </div>
       <div className="divider">OR</div>
       <div className="grid h-20 card bg-base-300 rounded-box place-items-center">
-        Social Login
+        <button
+          onClick={() => signInWithGoogle()}
+          className="btn w-full max-w-xs my-1"
+        >
+          Register With Google
+        </button>
       </div>
     </div>
   );
