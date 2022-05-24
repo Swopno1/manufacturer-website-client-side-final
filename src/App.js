@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register";
+import RequireAuth from "./Pages/Login/RequireAuth";
 import Purchase from "./Pages/Purchase/Purchase";
 import Footer from "./Shared/Footer";
 import Nav from "./Shared/Nav";
@@ -13,7 +14,14 @@ function App() {
       <Nav></Nav>
       <Routes>
         <Route path="/" element={<Home></Home>} />
-        <Route path="/purchase" element={<Purchase></Purchase>} />
+        <Route
+          path="/purchase"
+          element={
+            <RequireAuth>
+              <Purchase></Purchase>
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
       </Routes>

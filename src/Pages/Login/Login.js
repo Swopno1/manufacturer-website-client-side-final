@@ -26,11 +26,7 @@ const Register = () => {
     );
   }
   if (loading || gLoading) {
-    return (
-      <div className="container mx-auto flex text-center justify-center">
-        <Spinner></Spinner>
-      </div>
-    );
+    return <Spinner></Spinner>;
   }
   if (user || gUser) {
     return (

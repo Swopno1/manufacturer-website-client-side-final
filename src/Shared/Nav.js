@@ -5,12 +5,6 @@ import { Link, NavLink } from "react-router-dom";
 import auth from "../firebase.init";
 
 const Nav = () => {
-  const navItems = [
-    { _id: 1, item: "Purchase", link: "/purchase" },
-    { _id: 2, item: "Blogs", link: "/blogs" },
-    { _id: 3, item: "Contact", link: "/contact" },
-  ];
-
   const [user] = useAuthState(auth);
 
   const logout = () => {
@@ -44,18 +38,36 @@ const Nav = () => {
               tabIndex="0"
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              {navItems.map((item) => (
-                <li key={item._id}>
-                  <NavLink
-                    to={item.link}
-                    className={({ isActive }) =>
-                      isActive ? activeClass : undefined
-                    }
-                  >
-                    {item.item}
-                  </NavLink>
-                </li>
-              ))}
+              <li>
+                <NavLink
+                  to="/purchase"
+                  className={({ isActive }) =>
+                    isActive ? activeClass : undefined
+                  }
+                >
+                  Purchase
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/blogs"
+                  className={({ isActive }) =>
+                    isActive ? activeClass : undefined
+                  }
+                >
+                  Blogs
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    isActive ? activeClass : undefined
+                  }
+                >
+                  Contact
+                </NavLink>
+              </li>
             </ul>
           </div>
           <Link
@@ -67,22 +79,42 @@ const Nav = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
-            {navItems.map((item) => (
-              <li key={item._id}>
+            {user ? (
+              <li>
                 <NavLink
-                  to={item.link}
+                  to="/purchase"
                   className={({ isActive }) =>
                     isActive ? activeClass : undefined
                   }
                 >
-                  {item.item}
+                  Purchase
                 </NavLink>
               </li>
-            ))}
+            ) : undefined}
+            <li>
+              <NavLink
+                to="/blogs"
+                className={({ isActive }) =>
+                  isActive ? activeClass : undefined
+                }
+              >
+                Blogs
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  isActive ? activeClass : undefined
+                }
+              >
+                Contact
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">
-          {user?.email ? (
+          {user ? (
             <>
               <button onClick={() => logout()}>Logout</button>
             </>
