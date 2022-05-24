@@ -6,6 +6,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Spinner from "../../Shared/Spinner";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const {
@@ -18,6 +19,10 @@ const Register = () => {
     useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location?.state?.from?.pathname || "/";
+
   if (error || gError) {
     return (
       <div className="container mx-auto">
@@ -25,15 +30,13 @@ const Register = () => {
       </div>
     );
   }
+
   if (loading || gLoading) {
     return <Spinner></Spinner>;
   }
+
   if (user || gUser) {
-    return (
-      <div>
-        <p>Registered User: {user ? user?.user?.email : gUser?.user?.email}</p>
-      </div>
-    );
+    navigate(from, { replace: true });
   }
 
   const onSubmit = (data) => {
