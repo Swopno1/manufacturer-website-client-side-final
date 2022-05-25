@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import useTools from '../hooks/useTools';
 import PrimaryButton from './PrimaryButton';
 import ToolCard from './ToolCard';
@@ -13,6 +13,7 @@ const Tools = () => {
           <img
             src='https://api.lorem.space/image/movie?w=260&h=400'
             className='max-w-sm rounded-lg shadow-2xl'
+            alt=''
           />
           <div className='text-center lg:text-right'>
             <h1 className='text-4xl font-bold'>Our Tools</h1>
