@@ -8,6 +8,7 @@ import Portfolio from './Pages/Portfolio/Portfolio';
 import Purchase from './Pages/Purchase/Purchase';
 import Footer from './Shared/Footer';
 import Nav from './Shared/Nav';
+import PageNotFound from './Shared/PageNotFound';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/portfolio' element={<Portfolio></Portfolio>} />
         <Route path='/login' element={<Login></Login>} />
         <Route path='/register' element={<Register></Register>} />
+        <Route path='/*' element={<PageNotFound></PageNotFound>} />
       </Routes>
       <Footer></Footer>
     </div>
