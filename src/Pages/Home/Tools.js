@@ -1,37 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PrimaryButton from "../../Shared/PrimaryButton";
 import ToolCard from "./ToolCard";
 
 const Tools = () => {
-  const tools = [
-    {
-      _id: 1,
-      name: "Tools 1",
-      img: "https://api.lorem.space/image/shoes?w=400&h=225",
-      description: "Sample description for tools 1.",
-      minOrderQty: 10,
-      availableQty: 100,
-      price: 100,
-    },
-    {
-      _id: 2,
-      name: "Tools 2",
-      img: "https://api.lorem.space/image/shoes?w=400&h=225",
-      description: "Sample description for tools 2.",
-      minOrderQty: 10,
-      availableQty: 100,
-      price: 100,
-    },
-    {
-      _id: 3,
-      name: "Tools 3",
-      img: "https://api.lorem.space/image/shoes?w=400&h=225",
-      description: "Sample description for tools 3.",
-      minOrderQty: 10,
-      availableQty: 100,
-      price: 100,
-    },
-  ];
+  const [tools, setTools] = useState([]);
+
+  useEffect(() => {
+    const url = "http://localhost:4000/tools";
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setTools(data));
+  }, []);
 
   return (
     <div className="container mx-auto bg-base-100 mb-24">
