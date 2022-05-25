@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PageTitle from '../../Shared/PageTitle';
 
 const Portfolio = () => {
   return (
     <div className='container mx-auto my-3'>
-      <h1 className='text-3xl text-center font-bold py-3'>My Portfolio</h1>
+      <PageTitle>My Portfolio</PageTitle>
       <div className='card card-side bg-base-100 shadow-xl'>
         <figure>
           <img
