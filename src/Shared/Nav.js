@@ -41,12 +41,12 @@ const Nav = () => {
               {user ? (
                 <li>
                   <NavLink
-                    to='/tools'
+                    to='/dashboard'
                     className={({ isActive }) =>
                       isActive ? activeClass : undefined
                     }
                   >
-                    Tools
+                    Dashboard
                   </NavLink>
                 </li>
               ) : undefined}
@@ -104,12 +104,12 @@ const Nav = () => {
             {user ? (
               <li>
                 <NavLink
-                  to='/tools'
+                  to='/dashboard'
                   className={({ isActive }) =>
                     isActive ? activeClass : undefined
                   }
                 >
-                  Tools
+                  Dashboard
                 </NavLink>
               </li>
             ) : undefined}
