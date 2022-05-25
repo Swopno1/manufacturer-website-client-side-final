@@ -36,16 +36,28 @@ const Nav = () => {
             </label>
             <ul
               tabIndex='0'
-              className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
+              className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-primary rounded-box w-52'
             >
+              {user ? (
+                <li>
+                  <NavLink
+                    to='/tools'
+                    className={({ isActive }) =>
+                      isActive ? activeClass : undefined
+                    }
+                  >
+                    Tools
+                  </NavLink>
+                </li>
+              ) : undefined}
               <li>
                 <NavLink
-                  to='/purchase'
+                  to='/tools'
                   className={({ isActive }) =>
                     isActive ? activeClass : undefined
                   }
                 >
-                  Purchase
+                  Tools
                 </NavLink>
               </li>
               <li>
@@ -92,15 +104,25 @@ const Nav = () => {
             {user ? (
               <li>
                 <NavLink
-                  to='/purchase'
+                  to='/tools'
                   className={({ isActive }) =>
                     isActive ? activeClass : undefined
                   }
                 >
-                  Purchase
+                  Tools
                 </NavLink>
               </li>
             ) : undefined}
+            <li>
+              <NavLink
+                to='/tools'
+                className={({ isActive }) =>
+                  isActive ? activeClass : undefined
+                }
+              >
+                Tools
+              </NavLink>
+            </li>
             <li>
               <NavLink
                 to='/blogs'

@@ -6,6 +6,7 @@ import Register from './Pages/Login/Register';
 import RequireAuth from './Pages/Login/RequireAuth';
 import Portfolio from './Pages/Portfolio/Portfolio';
 import Purchase from './Pages/Purchase/Purchase';
+import Tools from './Pages/Tools/Tools';
 import Footer from './Shared/Footer';
 import Nav from './Shared/Nav';
 import PageNotFound from './Shared/PageNotFound';
@@ -16,14 +17,7 @@ function App() {
       <Nav></Nav>
       <Routes>
         <Route path='/' element={<Home></Home>} />
-        <Route
-          path='/purchase'
-          element={
-            <RequireAuth>
-              <Purchase></Purchase>
-            </RequireAuth>
-          }
-        />
+        <Route path='/tools' element={<Tools></Tools>} />
         <Route
           path='/tools/:id'
           element={
