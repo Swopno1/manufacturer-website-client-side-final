@@ -2,8 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const ToolCard = ({ tool }) => {
-  const { name, img, description, minOrderQty, availableQty, price } = tool;
   let navigate = useNavigate();
+
+  const { _id, name, img, description, minOrderQty, availableQty } = tool;
   return (
     <div className="card w-96">
       <figure>
@@ -13,8 +14,15 @@ const ToolCard = ({ tool }) => {
         <h2 className="card-title">{name}</h2>
         <p>{description}</p>
         <div className="card-actions justify-between">
-          <p>{`Price: $${price}`}</p>
-          <button className="btn btn-secondary">Purchase</button>
+          <p>{`Min Order: ${minOrderQty}`}</p>
+          <p>{`Available Stock: ${availableQty}`}</p>
+          <p>{`Price: ${availableQty}`}</p>
+          <button
+            className="btn btn-primary"
+            onClick={() => navigate(`/tools/${_id}`)}
+          >
+            Buy Now
+          </button>
         </div>
       </div>
     </div>

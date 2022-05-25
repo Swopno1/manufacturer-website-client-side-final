@@ -1,8 +1,8 @@
-import { signOut } from "firebase/auth";
-import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, NavLink } from "react-router-dom";
-import auth from "../firebase.init";
+import { signOut } from 'firebase/auth';
+import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, NavLink } from 'react-router-dom';
+import auth from '../firebase.init';
 
 const Nav = () => {
   const [user] = useAuthState(auth);
@@ -11,36 +11,36 @@ const Nav = () => {
     signOut(auth);
   };
 
-  let activeClass = "text-secondary";
+  let activeClass = 'text-secondary';
 
   return (
-    <nav className="bg-accent h-24 py-1 flex">
-      <div className="container mx-auto navbar text-base-100">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <label tabIndex="0" className="btn btn-ghost lg:hidden">
+    <nav className='bg-accent h-24 py-1 flex'>
+      <div className='container mx-auto navbar text-base-100'>
+        <div className='navbar-start'>
+          <div className='dropdown'>
+            <label tabIndex='0' className='btn btn-ghost lg:hidden'>
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+                xmlns='http://www.w3.org/2000/svg'
+                className='h-5 w-5'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M4 6h16M4 12h8m-8 6h16'
                 />
               </svg>
             </label>
             <ul
-              tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              tabIndex='0'
+              className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
             >
               <li>
                 <NavLink
-                  to="/purchase"
+                  to='/purchase'
                   className={({ isActive }) =>
                     isActive ? activeClass : undefined
                   }
@@ -50,7 +50,7 @@ const Nav = () => {
               </li>
               <li>
                 <NavLink
-                  to="/blogs"
+                  to='/blogs'
                   className={({ isActive }) =>
                     isActive ? activeClass : undefined
                   }
@@ -60,7 +60,17 @@ const Nav = () => {
               </li>
               <li>
                 <NavLink
-                  to="/contact"
+                  to='/portfolio'
+                  className={({ isActive }) =>
+                    isActive ? activeClass : undefined
+                  }
+                >
+                  My Portfolio
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to='/contact'
                   className={({ isActive }) =>
                     isActive ? activeClass : undefined
                   }
@@ -71,18 +81,18 @@ const Nav = () => {
             </ul>
           </div>
           <Link
-            to="/"
-            className="btn btn-ghost text-4xl text-success font-extrabold uppercase"
+            to='/'
+            className='btn btn-ghost text-4xl text-success font-extrabold uppercase'
           >
             Makers
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">
+        <div className='navbar-center hidden lg:flex'>
+          <ul className='menu menu-horizontal p-0'>
             {user ? (
               <li>
                 <NavLink
-                  to="/purchase"
+                  to='/purchase'
                   className={({ isActive }) =>
                     isActive ? activeClass : undefined
                   }
@@ -93,7 +103,7 @@ const Nav = () => {
             ) : undefined}
             <li>
               <NavLink
-                to="/blogs"
+                to='/blogs'
                 className={({ isActive }) =>
                   isActive ? activeClass : undefined
                 }
@@ -103,7 +113,17 @@ const Nav = () => {
             </li>
             <li>
               <NavLink
-                to="/contact"
+                to='/portfolio'
+                className={({ isActive }) =>
+                  isActive ? activeClass : undefined
+                }
+              >
+                My Portfolio
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to='/contact'
                 className={({ isActive }) =>
                   isActive ? activeClass : undefined
                 }
@@ -113,17 +133,17 @@ const Nav = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className='navbar-end'>
           {user ? (
             <>
               <button onClick={() => logout()}>Logout</button>
             </>
           ) : (
             <>
-              <Link to="/login" className="btn btn-ghost">
+              <Link to='/login' className='btn btn-ghost'>
                 Login
               </Link>
-              <Link to="/register" className="btn btn-ghost">
+              <Link to='/register' className='btn btn-ghost'>
                 Register
               </Link>
             </>
