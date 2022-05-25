@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   useSignInWithEmailAndPassword,
@@ -8,6 +8,7 @@ import auth from '../../firebase.init';
 import Spinner from '../../Shared/Spinner';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PageTitle from '../../Shared/PageTitle';
+import useJwtToken from '../../hooks/useJwtToken';
 
 const Register = () => {
   const {
@@ -20,9 +21,17 @@ const Register = () => {
     useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
+  const [token] = useJwtToken(user || gUser);
+
   const navigate = useNavigate();
   const location = useLocation();
   let from = location?.state?.from?.pathname || '/';
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
 
   if (error || gError) {
     return (
@@ -34,10 +43,6 @@ const Register = () => {
 
   if (loading || gLoading) {
     return <Spinner></Spinner>;
-  }
-
-  if (user || gUser) {
-    navigate(from, { replace: true });
   }
 
   const onSubmit = (data) => {
