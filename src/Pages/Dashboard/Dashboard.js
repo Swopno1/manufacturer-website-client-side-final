@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Outlet, Route, Routes } from 'react-router-dom';
 import PageTitle from '../../Shared/PageTitle';
 import RequireAuth from '../Login/RequireAuth';
 import AddReview from './AddReview';
@@ -21,6 +21,7 @@ const Dashboard = () => {
           My Profile
         </Link>
       </div>
+      <Outlet></Outlet>
     </div>
   );
 };
