@@ -1,10 +1,10 @@
-import React from "react";
-import Banner from "./Banner";
-import BusinessSummary from "./BusinessSummary";
-import CorporateDeal from "./CorporateDeal";
-import LatestNews from "./LatestNews";
-import Reviews from "./Reviews";
-import Tools from "./Tools";
+import React from 'react';
+import Banner from './Banner';
+import BusinessSummary from './BusinessSummary';
+import CorporateDeal from './CorporateDeal';
+import LatestNews from './LatestNews';
+import Reviews from './Reviews';
+import Tools from '../../Shared/Tools';
 
 const Home = () => {
   return (

@@ -52,12 +52,12 @@ const Nav = () => {
               ) : undefined}
               <li>
                 <NavLink
-                  to='/tools'
+                  to='/products'
                   className={({ isActive }) =>
                     isActive ? activeClass : undefined
                   }
                 >
-                  Tools
+                  Products
                 </NavLink>
               </li>
               <li>
@@ -115,12 +115,12 @@ const Nav = () => {
             ) : undefined}
             <li>
               <NavLink
-                to='/tools'
+                to='/products'
                 className={({ isActive }) =>
                   isActive ? activeClass : undefined
                 }
               >
-                Tools
+                Products
               </NavLink>
             </li>
             <li>
