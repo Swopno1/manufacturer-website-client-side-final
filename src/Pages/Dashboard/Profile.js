@@ -16,45 +16,39 @@ const Profile = () => {
 
   const [token] = useJwtToken(user);
 
-  const onSubmit = () => {};
+  const onSubmit = async (data) => {
+    await updateProfile({ displayName: data.name, photoURL: data.photoUrl });
+  };
 
   return (
     <div>
       <SectionTitle>My Profile</SectionTitle>
-      <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type='text'
-          placeholder='Enter Your Name'
-          {...register('name', { required: true })}
-          className='input input-bordered w-full max-w-xs my-1'
-        />
-        <p className='text-sm text-warning'>
-          {errors.name && <span>Enter a valid name!</span>}
-        </p>
-        <input
-          type='email'
-          placeholder='Enter Email Address'
-          {...register('email', { required: true })}
-          className='input input-bordered w-full max-w-xs my-1'
-        />
-        <p className='text-sm text-warning'>
-          {errors.email && <span>Enter a valid email!</span>}
-        </p>
+      <div className='max-w-xs mx-auto'>
+        <form className='max-w-xs' onSubmit={handleSubmit(onSubmit)}>
+          <input
+            type='text'
+            placeholder='Enter Your Profile Link'
+            {...register('photoUrl', { required: true })}
+            className='input input-bordered w-full max-w-xs my-1'
+          />
+          <p className='text-sm text-warning'>
+            {errors.photoUrl && <span>Enter a valid URL!</span>}
+          </p>
+          <input
+            type='text'
+            placeholder='Enter Your Name'
+            {...register('name', { required: true })}
+            className='input input-bordered w-full max-w-xs my-1'
+          />
+          <p className='text-sm text-warning'>
+            {errors.name && <span>Enter a valid name!</span>}
+          </p>
 
-        <input
-          type='password'
-          placeholder='Enter Password'
-          {...register('password', { required: true })}
-          className='input input-bordered w-full max-w-xs my-1'
-        />
-        <p className='text-sm text-warning'>
-          {errors.password && <span>Enter minimum 6 charecter!</span>}
-        </p>
-
-        <button type='submit' className='btn w-full max-w-xs my-1'>
-          Register
-        </button>
-      </form>
+          <button type='submit' className='btn w-full max-w-xs my-1'>
+            Update Profile
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
