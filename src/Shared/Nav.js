@@ -158,6 +158,9 @@ const Nav = () => {
         <div className='navbar-end'>
           {user ? (
             <>
+              <Link to='/dashboard/profile' className='mr-3 text-secondary'>
+                {user.displayName}
+              </Link>
               <button onClick={() => logout()}>Logout</button>
             </>
           ) : (

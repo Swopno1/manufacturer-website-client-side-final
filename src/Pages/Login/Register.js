@@ -14,7 +14,6 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -47,17 +46,18 @@ const Register = () => {
       </div>
     );
   }
-  if (user || gUser) {
-    return (
-      <div>
-        <p>Registered User: {user ? user.email : gUser.user.email}</p>
-      </div>
-    );
-  }
+  // if (user || gUser) {
+  //   return (
+  //     <div>
+  //       <p>Registered User: {user ? user.email : gUser.user.email}</p>
+  //     </div>
+  //   );
+  // }
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
+    navigate(from, { replace: true });
   };
 
   return (
