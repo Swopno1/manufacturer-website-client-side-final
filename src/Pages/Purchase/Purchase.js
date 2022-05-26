@@ -27,12 +27,12 @@ const Purchase = () => {
       <PageTitle>
         Purchase <span className='text-secondary'>{name}</span>
       </PageTitle>
-      <div class='card lg:card-side bg-base-100 shadow-xl w-3/5 mx-auto my-6'>
+      <div className='card lg:card-side bg-base-100 shadow-xl w-3/5 mx-auto my-6'>
         <figure>
           <img src={img} alt='Album' />
         </figure>
-        <div class='card-body'>
-          <h2 class='card-title'>{name}</h2>
+        <div className='card-body'>
+          <h2 className='card-title'>{name}</h2>
           <p>{description}</p>
           <div>
             <p>
@@ -50,7 +50,7 @@ const Purchase = () => {
           </div>
         </div>
       </div>
-      <div class='divider'></div>
+      <div className='divider'></div>
       <div className='my-3 max-w-xs mx-auto'>
         <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
           <input

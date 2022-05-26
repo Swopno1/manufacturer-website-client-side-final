@@ -1,10 +1,10 @@
 import React from 'react';
-import PageTitle from '../../Shared/PageTitle';
+import SectionTitle from '../../Shared/SectionTitle';
 
 const AddReview = () => {
   return (
     <div>
-      <PageTitle>Add A Review</PageTitle>
+      <SectionTitle>Add A Review</SectionTitle>
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import React from 'react';
-import PageTitle from '../../Shared/PageTitle';
+import SectionTitle from '../../Shared/SectionTitle';
 
 const Profile = () => {
   return (
     <div>
-      <PageTitle>My Profile</PageTitle>
+      <SectionTitle>My Profile</SectionTitle>
     </div>
   );
 };

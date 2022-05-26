@@ -1,10 +1,10 @@
 import React from 'react';
-import PageTitle from '../../Shared/PageTitle';
+import SectionTitle from '../../Shared/SectionTitle';
 
 const MyOrders = () => {
   return (
     <div>
-      <PageTitle>My Orders</PageTitle>
+      <SectionTitle>My Orders</SectionTitle>
     </div>
   );
 };
