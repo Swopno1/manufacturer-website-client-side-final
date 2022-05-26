@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 
 const useTools = (_id) => {
   const [tools, setTools] = useState([]);
-  let url = 'http://localhost:4000/tools';
+  let url = 'https://makers1.herokuapp.com/tools';
 
   useEffect(() => {
     if (_id) {
-      url = `http://localhost:4000/tools/${_id}`;
+      url = `https://makers1.herokuapp.com/tools/${_id}`;
     }
 
     fetch(url)

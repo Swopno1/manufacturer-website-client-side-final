@@ -3,8 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useTools from '../../hooks/useTools';
 import PageTitle from '../../Shared/PageTitle';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Purchase = () => {
+  const [user] = useAuthState(auth);
   const { id } = useParams();
   const tool = useTools(id);
   let navigate = useNavigate();
@@ -26,9 +29,10 @@ const Purchase = () => {
       price,
       description,
       orderQuantity: data.orderQuantity,
+      user: user.email,
     };
 
-    fetch('http://localhost:4000/purchase', {
+    fetch('https://makers1.herokuapp.com/purchase', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

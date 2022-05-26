@@ -35,7 +35,7 @@ const Dashboard = () => {
               </>
             ) : (
               <>
-                <Link className='tab tab-lifted' to='/dashboard/myprofile'>
+                <Link className='tab tab-lifted' to='/dashboard/allorders'>
                   Manage All Orders
                 </Link>
                 <Link className='tab tab-lifted' to='/dashboard/myprofile'>
