@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useTools from '../../hooks/useTools';
 import PageTitle from '../../Shared/PageTitle';
@@ -7,6 +7,7 @@ import PageTitle from '../../Shared/PageTitle';
 const Purchase = () => {
   const { id } = useParams();
   const tool = useTools(id);
+  let navigate = useNavigate();
 
   const { _id, name, img, price, description, minOrderQty, availableQty } =
     tool;
@@ -18,7 +19,26 @@ const Purchase = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    const product = {
+      productId: _id,
+      name,
+      img,
+      price,
+      description,
+      orderQuantity: data.orderQuantity,
+    };
+
+    fetch('http://localhost:4000/purchase', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+
+    navigate('/dashboard');
   };
 
   // console.log(tool);

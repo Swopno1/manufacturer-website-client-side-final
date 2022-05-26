@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Spinner from '../../Shared/Spinner';
@@ -20,6 +21,7 @@ const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [updateProfile, updating, uError] = useUpdateProfile(auth);
   const location = useLocation();
   let from = location?.state?.from?.pathname || '/';
 
@@ -31,14 +33,14 @@ const Register = () => {
     navigate(from, { replace: true });
   }
 
-  if (error || gError) {
+  if (error || gError || uError) {
     return (
       <div className='container mx-auto'>
         <p>Error: {error.message}</p>
       </div>
     );
   }
-  if (loading || gLoading) {
+  if (loading || gLoading || updating) {
     return (
       <div className='container mx-auto flex text-center justify-center'>
         <Spinner></Spinner>
@@ -53,8 +55,9 @@ const Register = () => {
     );
   }
 
-  const onSubmit = (data) => {
-    createUserWithEmailAndPassword(data.email, data.password);
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
   };
 
   return (

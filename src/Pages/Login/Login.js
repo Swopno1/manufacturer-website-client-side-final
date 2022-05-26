@@ -57,6 +57,7 @@ const Register = () => {
           <input
             type='email'
             placeholder='Enter Email Address'
+            autoComplete='username'
             {...register('email', { required: true })}
             className='input input-bordered w-full max-w-xs my-1'
           />
@@ -67,6 +68,7 @@ const Register = () => {
           <input
             type='password'
             placeholder='Enter Password'
+            autoComplete='current-password'
             {...register('password', { required: true })}
             className='input input-bordered w-full max-w-xs my-1'
           />
